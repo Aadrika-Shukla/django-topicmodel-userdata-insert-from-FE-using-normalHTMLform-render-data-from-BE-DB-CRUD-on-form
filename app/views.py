@@ -108,3 +108,22 @@ def insert_access(request):
     return render(request,'insert_access.html',d)#sending the topic objects from be to fe
 
 
+####   separete RETRIEVAL FUNCTIONs() created here THAT WILL GET CALLED WHEN DATA IS INSERTED,UPDATED,DELETED ######
+
+
+def display_topic(request):
+    QLTO=Topic.objects.all()
+    d={'QLTO':QLTO}
+    return render(request,'display_topic.html',d)
+
+
+def display_webpage(request):
+    QLWO=WebPage.objects.all()
+    d={'QLWO':QLWO}
+    return render(request,'display_webpage.html',d)
+
+
+def display_access(request):
+    QLAO=AccessRecord.objects.all()
+    d={'QLAO':QLAO}
+    return render(request,'display_access.html',d)
