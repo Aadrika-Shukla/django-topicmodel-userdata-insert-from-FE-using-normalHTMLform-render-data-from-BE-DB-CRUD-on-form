@@ -26,5 +26,16 @@ urlpatterns = [
     path('display_topic/',display_topic,name='display_topic'),
     path('display_webpage/',display_webpage,name='display_webpage'),
     path('display_access/',display_access,name='display_access'),
+    path('select_multiple_topics_dropdown/',select_multiple_topics_dropdown,name='select_multiple_topics_dropdown'),#for multiple selection using  dropdown list for topic table
+    path('select_multiple_webpage_dropdown/',select_multiple_webpage_dropdown,name='select_multiple_webpage_dropdown'), # for multiple seelection from dropdown list for webpage table
+    path('select_multiple_access_dropdown/',select_multiple_access_dropdown,name='select_multiple_access_dropdown'),# for multiple selection  using dropdown list for access records
+    path('display_topic_dropdown/',display_topic_dropdown,name='display_topic_dropdown'),# for displaying multiple records from topic table using dropdown list
+    path('display_webpage_dropdown/',display_webpage_dropdown,name='display_webpage_dropdown'),# for displaying multiple records from webpage table using dropdown list
+    path('display_access_dropdown/',display_access_dropdown,name='display_access_dropdown'),# for displaying multiple records from access records table using dropdown list
+    path('update_topic/',update_topic,name='update_topic'),
+    #path('update_webpage/',update_webpage,name='update_webpage'),
+    #path('update_access/',update_access,name='update_access'),
+
+
 
 ]

@@ -7,14 +7,14 @@
 </head>
 <body>
     <center>
-        <h1>AccessRecord Table data after modifications</h1>
+        <h1>AccessRecord Table data after retrieving multiple records</h1>
         <table border="3px dashed crimson">
             <tr>
                 <th>Name</th>
                 <th>Date</th>
                 <th>Author</th>
             </tr>
-            {% for ao in QLAO %}
+            {% for ao in AOS %}
                <tr>
                    <td>{{ ao.name }}</td>
                    <td>{{ ao.date }}</td>

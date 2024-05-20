@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Style for the form container */
+        .form-container {
+            border: 2px solid #ccc; /* Border style */
+            padding: 20px; /* Padding around the form */
+            margin: 20px auto; /* Center the form horizontally */
+            max-width: 400px; /* Maximum width of the form */
+        }
+
+        /* Style for the form heading */
+        .form-heading {
+            text-align: center; /* Center align the heading */
+            margin-bottom: 20px; /* Add some space below the heading */
+            background-color: burlywood;
+        }
+
+        /* Style for form fields */
+        .form-field {
+            margin-bottom: 10px; /* Add space between form fields */
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Select topics for whom you want to retrieve Webpage data</h1>
+        <div class="form-container">
+            <h1 class="form-heading">Data Retrieval for Webpage based on topic name</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-field">
+                    <label for="tn">TOPIC NAME</label>
+                    <select name="tn" id="tn" multiple><!--use multiple here for making my dropdown list able to select multiple options-->
+                       {% for to in QLTO %}
+                           <option value="{{to.topic_name}}">{{to.topic_name}}</option>
+                       {% endfor %}
+                    </select>
+                </div>
+                <div class="form-field">
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
