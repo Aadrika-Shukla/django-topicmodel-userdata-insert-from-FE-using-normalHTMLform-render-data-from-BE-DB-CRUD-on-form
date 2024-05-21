@@ -217,7 +217,7 @@ we will use none() here to create an emptyqueryset'''
 #==============using dropdown list here for choosing multiple options=============#
 
 
-###defining our functions for dropdown retrieval###
+###defining our functions for  multiple options dropdown retrieval###
 
 def display_webpage_dropdown(request):
     QLTO=Topic.objects.all()
@@ -267,12 +267,16 @@ def display_topic_dropdown(request):
 #==============using dropdown list here for choosing multiple options=============#
 
 
+##############      RETRIEVAL OF THE DATA BASED ON CONDITIONS   SELECTED BY THE USER  ###############
+
+
+
 
 def select_multiple_topics_dropdown(request):
     QLTO=Topic.objects.all()
     d={'QLTO':QLTO}
     if request.method=='POST':
-        STL=request.POST.getList('tn')
+        STL=request.POST.getlist('tn')
         TOS=Topic.objects.none()
         for t in STL:
             TOS=TOS|Topic.objects.filter(topic_name=t)
@@ -287,7 +291,7 @@ def select_multiple_webpage_dropdown(request):
     QLTO=Topic.objects.all()
     d={'QLTO':QLTO}
     if request.method=='POST':
-        STL=request.POST.getList('tn')
+        STL=request.POST.getlist('tn')
         WOS=WebPage.objects.none()
         for t in STL:
             WOS= WOS|WebPage.objects.filter(topic_name=t)
@@ -303,7 +307,7 @@ def select_multiple_access_dropdown(request):
     QLWO=WebPage.objects.all()
     d={'QLWO':QLWO}
     if request.method=='POST':
-        SNL=request.POST.getList('n')
+        SNL=request.POST.getlist('n')
         AOS=AccessRecord.objects.none()
         for n in SNL:
             AOS= AOS|AccessRecord.objects.filter(name=n)
@@ -319,6 +323,28 @@ def select_multiple_access_dropdown(request):
 ##################===============checkbox for all the tables===========######################
 
                     #-----------------action attribute usage----------------------#
+
+
+def topic_checkbox(request):
+    QLTO=Topic.objects.all()
+    d={'QLTO':QLTO}
+    #as we are using action attribute in our topic.html and provided the url of select_multiple_topics_dropdown it will take the whole working of the select_multiple_topics_dropdown function here only the display page we will render here will be different topic_checkbox to create checkboxes for  all topic names
+    return render(request,'topic_checkbox.html',d)
+
+
+
+def webpage_checkbox(request):
+    QLTO=Topic.objects.all()
+    d={'QLTO':QLTO}
+    #as we are using action attribute in our topic.html and provided the url of select_multiple_webpage_dropdown it will take the whole working of the select_multiple_webpage_dropdown function here only the display page we will render here will be different webpage_checkbox to create checkboxes for  all topic names and then display webpages data for that selected topic name
+    return render(request,'webpage_checkbox.html',d)
+
+
+def access_checkbox(request):
+    QLWO=WebPage.objects.all()
+    d={'QLWO':QLWO}
+    #as we are using action attribute in our topic.html and provided the url of select_multiple_access_dropdown it will take the whole working of the select_multiple_access_dropdown function here only the display page we will render here will be different access_checkbox to create checkboxes for  all  names and then display access records data for that selected  name
+    return render(request,'access_checkbox.html',d)
 
 
 

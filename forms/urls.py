@@ -32,7 +32,10 @@ urlpatterns = [
     path('display_topic_dropdown/',display_topic_dropdown,name='display_topic_dropdown'),# for displaying multiple records from topic table using dropdown list
     path('display_webpage_dropdown/',display_webpage_dropdown,name='display_webpage_dropdown'),# for displaying multiple records from webpage table using dropdown list
     path('display_access_dropdown/',display_access_dropdown,name='display_access_dropdown'),# for displaying multiple records from access records table using dropdown list
-    path('update_topic/',update_topic,name='update_topic'),
+    path('topic_checkbox/',topic_checkbox,name='topic_checkbox'),#for choosing multiple options using checkbox for topic table
+    path('webpage_checkbox/',webpage_checkbox,name='webpage_checkbox'),#for choosing multiple options using checkbox for webpage table 
+    path('access_checkbox/',access_checkbox,name='access_checkbox'),#for choosing multiple options using checkbox for access record table
+    #path('update_topic/',update_topic,name='update_topic'),
     #path('update_webpage/',update_webpage,name='update_webpage'),
     #path('update_access/',update_access,name='update_access'),
 

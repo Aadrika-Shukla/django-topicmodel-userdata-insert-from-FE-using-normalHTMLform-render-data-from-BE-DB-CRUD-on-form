@@ -30,13 +30,13 @@
     <center>
         <h1>Select topics for whom you want to retrieve records</h1>
         <div class="form-container">
-            <h1 class="form-heading">Data Retrieval for Topics based on topic name using checkbox</h1>
-            <form action="{% url 'select_multiple_topics_dropdown' %}"method="POST">  <!--this action attribute will take to the view or function code of the provided url and perform the same functioning as provided url ;action attribute is only used when you know their is another function performing the same task you want to do hence reduce code redundancy-->
-                {% csrf_token %}
+            <h1 class="form-heading">Data Retrieval for AccessRecord based on topic name using checkbox</h1>
+            <form action="{% url 'select_multiple_access_dropdown' %}"method="POST">    <!--this action attribute will take to the view or function code of the provided url and perform the same functioning as provided url ;action attribute is only used when you know their is another function performing the same task you want to do hence reduce code redundancy-->
+                {% csrf_token %}                               
                 <div class="form-field">
-                       {% for to in QLTO %}                                            <!-- for creating chcekbox the label and input type should be in for loop because you need to create as many labels and checkboxes as many objects we have in our queryset coming  from backend -->
-                           <label for="tn">{{to.topic_name}}</label>
-                           <input type="checkbox" name="tn" id="tn" value="{{to.topic_name}}"> 
+                       {% for wo in QLWO %}                                             <!-- for creating chcekbox the label and input type should be in for loop because you need to create as many labels and checkboxes as many objects we have in our queryset coming  from backend -->
+                           <label for="n">{{wo.name}}</label>
+                           <input type="checkbox" name="n" id="n" value="{{wo.id}}"> 
                        {% endfor %}
                 </div>
                 <div class="form-field">
