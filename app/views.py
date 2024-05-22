@@ -370,12 +370,59 @@ def update_topic(request):
     d={'QLTO':QLTO}
     if request.method=='POST':
         tn=request.POST['tn']
-        TO=Topic.objects.update(topic_name=tn)
-        TO.save()
+        new_topic_name= request.POST['new_topic_name']
+        TO=Topic.objects.filter(topic_name=tn).update(topic_name=new_topic_name)
         QLTO=Topic.objects.all()
         d={'QLTO':QLTO}
         return render(request,'display_topic.html',d)
-    return render(request,'update_topic.html')
+    return render(request,'update_topic.html',d)
+
+
+
+#for updating existing WEBPAGE DATA present in my database for WEBPAGE table
+
+
+def update_webpage(request):
+    QLWO = WebPage.objects.all()  # TO DISPLAY ALL THE WEBPAGES NAMES IN FE
+    d = {'QLWO': QLWO}  # Pass webpages to the template
+
+    if request.method == 'POST':
+        n = request.POST.get('n')  # Get selected  name
+        new_name = request.POST.get('new_name')  # Get new name
+        new_url = request.POST.get('new_url')  # Get new URL
+        new_email = request.POST.get('new_email')  # Get new email
+
+        # Update WebPage instances associated with the selected topic
+        WO = WebPage.objects.filter(name=n).update(name=new_name,url=new_url,email=new_email)
+        # Pass filtered WebPage queryset to the template
+        QLWO=WebPage.objects.all()
+        d = { 'QLWO': QLWO}
+        return render(request, 'display_webpage.html', d)  # Redirect to a page to display updated data
+
+    return render(request, 'update_webpage.html', d)  # Render the update form initially
+   
+
+   
+#for updating existing ACCESS RECORDS DATA present in my database for ACCESS RECORDS table
+
+
+def update_access(request):
+    QLWO = WebPage.objects.all()  # TO DISPLAY ALL THE WEBPAGES NAMES IN FE
+    d = {'QLWO': QLWO}  # Pass webpages to the template
+
+    if request.method == 'POST':
+        n = request.POST.get('n')  # Get selected  name
+        new_date = request.POST.get('new_date')  # Get new date
+        new_author= request.POST.get('new_author')  # Get new author
+
+        # Update AccessRecords instances associated with the selected name
+        AO = AccessRecord.objects.filter(name=n).update(date=new_date,author=new_author)
+        # Pass filtered ACCESS RECORDS queryset to the template
+        QLAO=AccessRecord.objects.all()
+        d = {'QLAO': QLAO}
+        return render(request, 'display_access.html', d)  # Redirect to a page to display updated data
+
+    return render(request, 'update_access.html', d)  # Render the update form initially
 
 
 
@@ -384,20 +431,6 @@ def update_topic(request):
 
 
 
-
-
-#for updating existing topic names present in my database for topic table
-#def update_webpage(request):
-
-
-
-
-
-
-
-
-#for updating existing topic names present in my database for topic table
-#def update_access(request):
 
 
 

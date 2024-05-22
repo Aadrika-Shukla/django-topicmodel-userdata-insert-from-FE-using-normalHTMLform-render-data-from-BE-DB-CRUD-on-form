@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data updation for Webpage</title>
+    <style>
+        /* Styles for the form container, heading, and fields */
+        .form-container {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .form-heading {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color:cadetblue;
+        }
+
+        .form-field {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="form-container">
+            <h1 class="form-heading">Data Updation for Webpage</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-field">
+                    <label for="tn">SELECT THE NAME</label>
+                    <select name="n" id="n">
+                        {% for wo in QLWO %}
+                        <option value="{{ wo.name }}">{{ wo.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- Input fields for updating name, URL, and email -->
+                <div class="form-field">
+                    <label for="new_name">ENTER THE UPDATED NAME</label>
+                    <input type="text" name="new_name" id="new_name"value="{{ wo.name}}">
+                </div>
+                <div class="form-field">
+                    <label for="new_url">ENTER THE UPDATED URL</label>
+                    <input type="text" name="new_url" id="new_url"value="{{wo.url}}">
+                </div>
+                <div class="form-field">
+                    <label for="new_email">ENTER THE UPDATED EMAIL</label>
+                    <input type="email" name="new_email" id="new_email"value="{{wo.email}}">
+                </div>
+                <div class="form-field">
+                    <input type="submit" value="Update">
+                </div>
+            </form>
+        </div>
+    </center>
+</body>
+</html>
