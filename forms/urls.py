@@ -35,9 +35,12 @@ urlpatterns = [
     path('topic_checkbox/',topic_checkbox,name='topic_checkbox'),#for choosing multiple options using checkbox for topic table
     path('webpage_checkbox/',webpage_checkbox,name='webpage_checkbox'),#for choosing multiple options using checkbox for webpage table 
     path('access_checkbox/',access_checkbox,name='access_checkbox'),#for choosing multiple options using checkbox for access record table
-    path('update_topic/',update_topic,name='update_topic'),
-    path('update_webpage/',update_webpage,name='update_webpage'),
-    path('update_access/',update_access,name='update_access'),
+    path('update_topic/',update_topic,name='update_topic'),          #for updating  specific topic name  selected by user
+    path('update_webpage/',update_webpage,name='update_webpage'),     #for updating  specific webpage details  selected by user
+    path('update_access/',update_access,name='update_access'),         #for updating  specific access records details  selected by user
+    path('delete_topic/',delete_topic,name='delete_topic'),             #for deleting specific topic name  selected by user
+    path('delete_webpage/',delete_webpage,name='delete_webpage'),        #for deleting specific  webpage  data selected by user
+    path('delete_access/',delete_access,name='delete_access'),            #for deleting specific access record data  selected by user
 
 
 

@@ -427,6 +427,62 @@ def update_access(request):
 
 
 
+''''    #####################    DELETION OF FORM DATA ###############################   '''
+
+
+#DELETING TOPIC TABLE DATA
+
+
+#to delete a specific topic name from topic table from our database
+
+
+
+def delete_topic(request):
+    QLTO=Topic.objects.all()
+    d={'QLTO':QLTO}
+    if request.method=='POST':
+        tn=request.POST['tn']
+        TO=Topic.objects.filter(topic_name=tn).delete()
+        QLTO=Topic.objects.all()
+        d={'QLTO':QLTO}
+        return render(request,'display_topic.html',d)
+    return render(request,'delete_topic.html',d)
+
+
+
+
+#to delete a specific webpage based on the  name selected by user from Webpage table from our database
+
+def delete_webpage(request):
+    QLWO=WebPage.objects.all()
+    d={'QLWO':QLWO}
+    if request.method=='POST':
+        n=request.POST['n']
+        WO=WebPage.objects.filter(name=n).delete()
+        QLWO=WebPage.objects.all()
+        d={'QLWO':QLWO}
+        return render(request,'display_webpage.html',d)
+    return render(request,'delete_webpage.html',d)
+
+
+#to delete a specific access record  based on the  name selected by user from Access  Record table from our database
+
+
+def delete_access(request):
+    QLAO=AccessRecord.objects.all()
+    d={'QLAO':QLAO}
+    if request.method=='POST':
+        n=request.POST['n']
+        AO=AccessRecord.objects.filter(id=n).delete()
+        QLAO=AccessRecord.objects.all()
+        d={'QLAO':QLAO}
+        return render(request,'display_access.html',d)
+    return render(request,'delete_access.html',d)
+
+
+
+
+
 
 
 

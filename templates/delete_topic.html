@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data updation for Topics</title>
+    <title>Data deletion for Topics</title>
     <style>
       
             /* Style for the form container */
@@ -30,13 +30,13 @@
 </head>
 <body>
     <center>
-        <h1>Select the topic name in order to update it</h1>
+        <h1>Select the name of the topic in order to delete it's respective data</h1>
         <div class="form-container">
-            <h1 class="form-heading">Data Updation for Topics</h1>
+            <h1 class="form-heading">Data deletion for Topics</h1>
             <form  method="POST">
                 {% csrf_token %}
             <div class="form-field">
-            <label for="tn">SELECT THE TOPIC NAME YOU WANT TO UPDATE</label>
+            <label for="tn">SELECT THE TOPIC NAME YOU WANT TO DELETE</label>
             <select name="tn" id="tn"> <!--  ### select is used here to create dropdown list ###-->
                 {% for to in QLTO %}       <!--  ###  as many objects (topic names) are their in topic objects create that many options in my dropdown list ###-->
                   <option value="{{ to.topic_name }}">{{ to.topic_name }}</option>   <!--  ### in value we pass content which you need to carry to be(here topic_name->primary key coloumn for our topic table) usually and recommmended to use primary key column here after the value attribute we pass write the content we need to display as our option-->
@@ -44,10 +44,7 @@
                 </select>
             </div>
             <div class="form-field">
-            <label for="new_topic_name">ENTER THE UPDATED TOPIC NAME</label>
-            <input type="text" name="new_topic_name" id="new_topic_name" value="{{to.topic_name}}"></div>
-            <div class="form-field">
-                <input type="submit" value="update">
+                <input type="submit" value="delete">
             </div>
 
         </form>
